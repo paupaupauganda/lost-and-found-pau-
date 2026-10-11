@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Lost and Found System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏫 School Lost and Found System</h1>
+            <p>Manage found items and claims efficiently</p>
+        </header>
+
+        <!-- Registration Form -->
+        <section class="form-section">
+            <h2>📝 Register Item</h2>
+            <form id="itemForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dateTime">Date & Time Found</label>
+                        <input type="datetime-local" id="dateTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemId">Item ID</label>
+                        <input type="text" id="itemId" readonly>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="itemName">Item Name / Description</label>
+                        <input type="text" id="itemName" placeholder="e.g., Black Wallet, ID Card" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location Found</label>
+                        <input type="text" id="location" placeholder="e.g., Library, Room 203, Canteen" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" required>
+                            <option value="Found">Found</option>
+                            <option value="Lost">Reported Lost</option>
+                            <option value="Unclaimed">Unclaimed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact Number (Optional)</label>
+                        <input type="text" id="contact" placeholder="e.g., 09123456789">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn primary-btn">➕ Add Item</button>
+            </form>
+        </section>
+
+        <!-- Claiming Module -->
+        <section class="form-section claim-section">
+            <h2>✅ Claim Item</h2>
+            <form id="claimForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="claimItemId">Item ID to Claim</label>
+                        <input type="text" id="claimItemId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="claimerName">Claimer Full Name</label>
+                        <input type="text" id="claimerName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="claimerContact">Claimer Contact Number</label>
+                        <input type="text" id="claimerContact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateClaimed">Date Claimed</label>
+                        <input type="datetime-local" id="dateClaimed" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn claim-btn">✓ Mark as Claimed</button>
+            </form>
+        </section>
+
+        <!-- Search & Filter -->
+        <section class="search-section">
+            <h2>🔍 Search & Filter</h2>
+            <div class="search-row">
+                <input type="text" id="searchInput" placeholder="Search by item name or location...">
+                <select id="filterStatus">
+                    <option value="All">All Status</option>
+                    <option value="Found">Found</option>
+                    <option value="Lost">Lost</option>
+                    <option value="Claimed">Claimed</option>
+                    <option value="Unclaimed">Unclaimed</option>
+                </select>
+                <button id="exportBtn" class="btn export-btn">📤 Export CSV</button>
+            </div>
+        </section>
+
+        <!-- Records Table -->
+        <section class="table-section">
+            <h2>📋 Item Records</h2>
+            <div class="table-wrapper">
+                <table id="itemsTable">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Item ID</th>
+                            <th>Item Name</th>
+                            <th>Location Found</th>
+                            <th>Status</th>
+                            <th>Claimer Info</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsBody">
+                        <!-- Data inserted here by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <p id="noRecords" class="no-records">No items registered yet.</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
